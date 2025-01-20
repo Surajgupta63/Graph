@@ -1,4 +1,6 @@
 // DFS Traversal
+    // T.C : O(V + E)
+    // S.C : O(V)
     void DFS(vector<vector<int>>& adj, int u, vector<bool> &visited, vector<int> &ans){
         if(visited[u]) return;
         
