@@ -1,4 +1,6 @@
-
+// Using DFS
+// T.C : O(V+E)
+// S.C : O(V+V)
 class Solution{
     public:
     bool isCycleDFS(vector<vector<int>> &adj, int u, vector<bool> &visited, vector<bool> &currRec){
