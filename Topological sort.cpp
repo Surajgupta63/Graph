@@ -31,3 +31,42 @@ class Solution{
         return topoSort;
     }
 };
+
+// Topological Sort Using BFS(Kahn's Algorithm)
+// T.C : O(V+E)
+// S.C : O(V+V)
+class Solution{
+    public:
+    vector<int> topologicalSort(vector<vector<int>>& adj) {
+        int V = adj.size();
+        vector<int> indegree(V, 0);
+        for(int u=0; u<V; u++){
+            for(int &v : adj[u]){
+                indegree[v]++;
+            }
+        }
+        
+        queue<int> q;
+        for(int v = 0; v<V; v++){
+            if(indegree[v] == 0){
+                q.push(v);
+            }
+        }
+        
+        vector<int> topoSort;
+        
+        while(!q.empty()){
+            int u = q.front();
+            topoSort.push_back(u);
+            q.pop();
+
+            for(int &v : adj[u]){
+                indegree[v]--;
+                if(indegree[v] == 0){
+                    q.push(v);
+                }
+            }
+        }
+        return topoSort;
+    }
+};
