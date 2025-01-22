@@ -27,3 +27,43 @@ class Solution{
         return false;
     }
 };
+
+// Using BFS (Topological Sort (Kahn's Algorithm))
+// T.C : O(V+E)
+// S.C : O(V+V)
+class Solution{
+    public:
+    bool isCyclic(int V, vector<vector<int>> adj) {
+        vector<int> indegree(V, 0);
+        for(int u=0; u<V; u++){
+            for(int &v : adj[u]){
+                indegree[v]++;
+            }
+        }
+        
+        queue<int> q;
+        for(int v=0; v<V; v++){
+            if(indegree[v] == 0){
+                q.push(v);
+            }
+        }
+        
+        int count = 0;
+        
+        while(!q.empty()){
+            int u = q.front();
+            count++;
+            q.pop();
+            
+            for(int &v : adj[u]){
+                indegree[v]--;
+                if(indegree[v] == 0){
+                    q.push(v);
+                }
+            }
+        }
+        
+        if(count == V) return false;
+        return true;
+    }
+};
