@@ -42,7 +42,7 @@ public:
     }
 };
 
-
+// Using DFS
 class Solution {
 public:
     bool isCycleDFS(unordered_map<int, vector<int>> &adj, int u, vector<bool>& visited, vector<bool>& inRecursion) {
