@@ -57,8 +57,10 @@ public:
         for(int &v : adj[u]){
             if(!visited[v])
                 topoSortCourses(adj, v, visited, currRec, st, isCycle);
-            else if(currRec[v])
-                isCycle = true;   
+            else if(currRec[v]){
+                isCycle = true; 
+                return;
+            }
         }
         currRec[u] = false;
         st.push(u);
