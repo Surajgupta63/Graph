@@ -1,4 +1,4 @@
-// Using DFS and taking a adj list 
+// Using DFS and taking an adj list 
 // T.C : O(V+E)
 // S.C : O(V + V*E)
 class Solution {
@@ -31,6 +31,36 @@ public:
         for(int i=1; i<=V; i++){
             if(!visited[i]){
                 DFS(adj, i, visited);
+                count++;
+            }
+        }
+
+        return count;
+    }
+};
+
+// Using DFS and without taking an adj list 
+// T.C : O(V+E)
+// S.C : O(V)
+class Solution {
+public:
+    void DFS(vector<vector<int>>& isConnected, int u, vector<bool> &visited){
+        visited[u] = true;
+        for(int v = 0; v<isConnected.size(); v++){
+            if(!visited[v] && isConnected[u][v] == 1){
+                DFS(isConnected, v, visited);
+            }
+        }
+    }
+
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int V = isConnected.size();
+        vector<bool> visited(V, false);
+
+        int count = 0;
+        for(int i=0; i<V; i++){
+            if(!visited[i]){
+                DFS(isConnected, i, visited);
                 count++;
             }
         }
