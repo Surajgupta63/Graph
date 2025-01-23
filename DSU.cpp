@@ -23,7 +23,7 @@ int find(int i){
     return parent[i] = find(parent[i], parent);
 }
 
-void DSUunion(int x, int y){
+void Uunion(int x, int y){
     int x_parent = find(x, parent);
     int y_parent = find(y, parent);
 
