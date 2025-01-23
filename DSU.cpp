@@ -20,12 +20,12 @@ vector<int> rank;
 int find(int i){
     if(i == parent[i]) return i;
 
-    return parent[i] = find(parent[i], parent);
+    return parent[i] = find(parent[i]);
 }
 
-void Uunion(int x, int y){
-    int x_parent = find(x, parent);
-    int y_parent = find(y, parent);
+void Union(int x, int y){
+    int x_parent = find(x);
+    int y_parent = find(y);
 
     if(x_parent == y_parent){
         return;
