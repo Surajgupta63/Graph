@@ -15,13 +15,15 @@ void DSUunion(int x, int y, vector<int> parent){
 }
 
 // Disjoint Set Union By Rank and Path Compression
-int find(int i, vector<int> parent){
+vector<int> parent;
+vector<int> rank;
+int find(int i){
     if(i == parent[i]) return i;
 
     return parent[i] = find(parent[i], parent);
 }
 
-void DSUunion(int x, int y, vector<int> parent, vector<int> rank){
+void DSUunion(int x, int y){
     int x_parent = find(x, parent);
     int y_parent = find(y, parent);
 
