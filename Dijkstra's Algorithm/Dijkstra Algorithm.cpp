@@ -1,5 +1,5 @@
 // Using Priority Queue
-// T.C : O(V + E)
+// T.C : O(V*Vlog(V))
 // S.C : O(V)
 class Solution{
     public:
@@ -11,20 +11,20 @@ class Solution{
         ans[src] = 0;
         pq.push({0, src});
         
-        while(!pq.empty()){
+        while(!pq.empty()){ // O(V)
             pair<int, int> p = pq.top();
-            pq.pop();
+            pq.pop(); // log(V)
             
             int d = p.first;
             int u = p.second;
             
-            for(auto &vec : adj[u]){
+            for(auto &vec : adj[u]){ // O(E)
                 int v  = vec.first;
                 int wt = vec.second;
                 
                 if(d + wt < ans[v]){
                     ans[v] = d + wt;
-                    pq.push({d+wt, v});
+                    pq.push({d+wt, v}); // log(V)
                 }
             }
             
@@ -35,7 +35,7 @@ class Solution{
 
 
 // Using Set
-// T.C : O(V + E)
+// T.C : O(V*Vlog(V))
 // S.C : O(V)
 class Solution{
     public:
