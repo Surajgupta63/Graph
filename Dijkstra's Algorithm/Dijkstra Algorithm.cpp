@@ -32,3 +32,43 @@ class Solution{
         return ans;
     }
 };
+
+
+// Using Set
+// T.C : O(V + E)
+// S.C : O(V)
+class Solution{
+    public:
+    vector<int> dijkstra(vector<vector<pair<int, int>>> &adj, int src) {
+        int V = adj.size();
+        set<pair<int, int>> st;
+        vector<int> ans(V, INT_MAX);
+        
+        ans[src] = 0;
+        st.insert({0, src});
+        
+        while(!st.empty()){
+            auto &it = *st.begin();
+            int d = it.first;
+            int u = it.second;
+            st.erase(it);
+            
+            for(auto &vec : adj[u]){
+                int node = vec.first;
+                int wt   = vec.second;
+                
+                if(d + wt < ans[node]){
+                    
+                    if(ans[node] != INT_MAX){
+                        st.erase({ans[node], node});
+                    }
+                    
+                    ans[node] = d+wt;
+                    st.insert({d+wt, node});
+                }
+            }
+        }
+        return ans;
+    }
+};
+
