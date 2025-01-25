@@ -77,3 +77,44 @@ public:
         return result[m-1][n-1]+1;
     }
 };
+
+// Using Dijkstra's Algorithm (Queue) 
+// Reason : Because distance is constant(1) to moving in any cell so that we can use queue instead od priority queue.
+class Solution {
+public:
+    int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid.size();
+        if(m == 0 || n == 0 || grid[0][0] != 0) return -1;
+    
+        vector<vector<int>> directions = {{1,1}, {0, 1}, {0, -1}, {1, 0}, {-1, 0}, {-1, -1}, {1, -1}, {-1, 1}};
+        typedef pair<int, pair<int, int>> P;
+        queue<P> q;
+        vector<vector<int>> result(m, vector<int>(n, INT_MAX));
+
+        q.push({0, {0, 0}});
+        result[0][0] = 0;
+
+        while(!q.empty()){
+            int d = q.front().first;
+            auto node = q.front().second;
+            q.pop();
+            int x = node.first;
+            int y = node.second;
+
+            for(auto &dir : directions){
+                int x_ = x + dir[0];
+                int y_ = y + dir[1];
+
+                if(x_ >= 0 && x_ < m && y_ >= 0 && y_ < n && grid[x_][y_] == 0 && d + 1 < result[x_][y_]){
+                    q.push({d+1, {x_, y_}});
+                    result[x_][y_] = d+1;
+                }
+            }
+
+        }
+
+        if(result[m-1][n-1] == INT_MAX) return -1;
+        return result[m-1][n-1]+1;
+    }
+};
