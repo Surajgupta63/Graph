@@ -1,4 +1,6 @@
-
+// Using Dijktra's Algorithm
+// T.C : O(V*Vlog(V)
+// S.C : O(V)
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
@@ -19,7 +21,7 @@ public:
         while(!pq.empty()){ // O(V)
             int time = pq.top().first;
             int node = pq.top().second;
-            pq.pop(); //log(E)
+            pq.pop(); //log(V)
 
             for(auto P : adj[node]){ // O(E)
                 int newNode = P.first;
@@ -27,7 +29,7 @@ public:
 
                 if(time + newTime < result[newNode]){
                     result[newNode] = time + newTime;
-                    pq.push({time+newTime, newNode}); // log(E)
+                    pq.push({time+newTime, newNode}); // log(V)
                 }
             }
         }
