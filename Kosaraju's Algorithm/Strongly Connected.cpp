@@ -1,3 +1,4 @@
+// Kosaraju's Algorithm
 // T.C : O(V+E)
 // S.C : O(V+E)
 class Solution {
@@ -56,3 +57,4 @@ class Solution {
         }
         return count;
     }
+};
