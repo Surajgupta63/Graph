@@ -1,3 +1,4 @@
+// Prim's Algorithm
 // T.C : O(E + (log(E) + log(E)) = O(Elog(E))
 // S.C : O(V)
 class Solution {
