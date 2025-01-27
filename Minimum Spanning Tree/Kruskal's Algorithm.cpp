@@ -1,4 +1,4 @@
-
+// Kruskal's Algorithm using DSU
 class Soltion{
   public:
   
@@ -32,7 +32,7 @@ class Soltion{
   
     int KruskalsAlgorithm(vector<vector<int>> vec, int V){
         int sum = 0;
-        for(auto &temp : vec){
+        for(auto &temp : vec){ // O(V) * O(E)
             int u = temp[0];
             int v = temp[1];
             int w = temp[2];
@@ -56,7 +56,7 @@ class Soltion{
         for(int i=0; i<V; i++){
             parent[i] = i;
         }
-        
+        // O(V + E)
         for(int i=0; i<V; i++){
             for(auto it : adj[i]){
                 int u = i;
@@ -71,7 +71,7 @@ class Soltion{
             return vec1[2] < vec2[2]; 
         };
         
-        sort(vec.begin(), vec.end(), comp);
+        sort(vec.begin(), vec.end(), comp); // Elog(E)
         
         return KruskalsAlgorithm(vec, V);
     }
