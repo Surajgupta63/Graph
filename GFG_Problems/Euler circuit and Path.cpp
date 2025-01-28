@@ -1,4 +1,5 @@
-
+// T.C : O(V+E)
+// S.C : O(V)
 class Solution{
   public:
     void DFS(vector<int>adj[], int u, vector<bool> &visited){
