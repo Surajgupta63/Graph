@@ -1,4 +1,5 @@
-
+// T.C : O(N)
+// S.C : O(N);
 class Solution{
   public:
   void DFS(vector<int> &Edge, int u, vector<int> &visited, vector<int> &inRecur, int &cycleNode){
